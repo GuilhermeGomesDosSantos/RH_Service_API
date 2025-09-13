@@ -1,0 +1,1 @@
+ALTER TABLE colaboradores ADD situacao VARCHAR(30) NOT NULL;
