@@ -1,5 +1,6 @@
 package rh.service.RH.Service.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +19,7 @@ public class ColaboradorController {
 
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody DadosCadastroColaborador dados){
+    public void cadastrar(@RequestBody @Valid DadosCadastroColaborador dados){
         repository.save(new Colaborador(dados));
     }
 
