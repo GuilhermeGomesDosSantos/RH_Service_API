@@ -163,4 +163,9 @@ public class Colaborador {
             this.endereco.atualizar(dados.endereco());
         }
     }
+
+    public void desativar(Long id) {
+        this.status = false;
+        this.situacao = "Desligado";
+    }
 }

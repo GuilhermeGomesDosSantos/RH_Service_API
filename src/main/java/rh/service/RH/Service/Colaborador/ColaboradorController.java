@@ -43,5 +43,18 @@ public class ColaboradorController {
         var colaborador = repository.getReferenceById(dados.id());
         colaborador.atualarInformacoes(dados);
     }
+
+    @DeleteMapping("/delete/{id}")
+    @Transactional
+    public void deletar(@PathVariable Long id){
+        repository.deleteById(id);
+    }
+
+    @DeleteMapping("/inactive/{id}")
+    @Transactional
+    public void desativar(@PathVariable Long id){
+        var colaborador = repository.getReferenceById(id);
+        colaborador.desativar(id);
+    }
 }
 
