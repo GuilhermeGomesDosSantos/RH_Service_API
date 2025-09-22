@@ -21,6 +21,34 @@ public class Endereco {
     public Endereco() {
     }
 
+    public String getLogradouro() {
+        return logradouro;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public String getUf() {
+        return uf;
+    }
+
+    public String getComplemento() {
+        return complemento;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
     public Endereco(DadosEndereco dados) {
         this.logradouro = dados.logradouro();
         this.bairro = dados.bairro();

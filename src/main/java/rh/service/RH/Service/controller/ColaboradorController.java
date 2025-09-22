@@ -1,16 +1,14 @@
-package rh.service.RH.Service.Colaborador;
+package rh.service.RH.Service.controller;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-import rh.service.RH.Service.Colaborador.Colaborador;
-import rh.service.RH.Service.Colaborador.ColaboradorRepository;
-import rh.service.RH.Service.Colaborador.DadosCadastroColaborador;
-import rh.service.RH.Service.Colaborador.DadosListagemColaborador;
+import rh.service.RH.Service.Colaborador.*;
 import rh.service.RH.Service.controller.DadosAtualizaColaborador;
 
 import java.util.List;
@@ -33,28 +31,36 @@ public class ColaboradorController {
     }
 
     @GetMapping("/listActives")
-    public Page<DadosListagemColaborador> listarAtivos(@PageableDefault(size = 20, sort = {"nomeCompleto"}) Pageable pageable){
-        return repository.findAllByStatusTrue(pageable).map(DadosListagemColaborador::new);
+    public ResponseEntity <Page<DadosListagemColaborador>> listarAtivos(@PageableDefault(size = 20, sort = {"nomeCompleto"}) Pageable pageable){
+        var colaboradorLista = repository.findAllByStatusTrue(pageable).map(DadosListagemColaborador::new);
+
+        return ResponseEntity.ok(colaboradorLista);
     }
 
     @PutMapping("/update")
     @Transactional
-    public void atualizar(@RequestBody @Valid DadosAtualizaColaborador dados){
+    public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizaColaborador dados){
         var colaborador = repository.getReferenceById(dados.id());
         colaborador.atualarInformacoes(dados);
+
+        return ResponseEntity.ok(new DadosDetalhamentoColaborador(colaborador));
     }
 
     @DeleteMapping("/delete/{id}")
     @Transactional
-    public void deletar(@PathVariable Long id){
+    public ResponseEntity deletar(@PathVariable Long id){
         repository.deleteById(id);
+
+        return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/inactive/{id}")
     @Transactional
-    public void desativar(@PathVariable Long id){
+    public ResponseEntity desativar(@PathVariable Long id){
         var colaborador = repository.getReferenceById(id);
         colaborador.desativar(id);
+
+        return ResponseEntity.ok(new DadosDetalhamentoColaboradorInativo(colaborador));
     }
 }
 
