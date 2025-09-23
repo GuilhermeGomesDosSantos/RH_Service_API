@@ -8,6 +8,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 import rh.service.RH.Service.Colaborador.*;
 import rh.service.RH.Service.controller.DadosAtualizaColaborador;
 
@@ -21,8 +22,13 @@ public class ColaboradorController {
 
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody @Valid DadosCadastroColaborador dados){
-        repository.save(new Colaborador(dados));
+    public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroColaborador dados, UriComponentsBuilder uriComponentsBuilder){
+        var colaborador = new Colaborador(dados);
+        repository.save(colaborador);
+
+        var uri = uriComponentsBuilder.path("/colaboradores/{id}").buildAndExpand(colaborador.getId()).toUri();
+
+        return ResponseEntity.created(uri).body(new DadosDetalhamentoColaborador(colaborador));
     }
 
     @GetMapping("/listAll")
