@@ -43,6 +43,13 @@ public class ColaboradorController {
         return ResponseEntity.ok(colaboradorLista);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity buscarColaboradorId(@PathVariable Long id){
+        var colaborador = repository.getReferenceById(id);
+
+        return ResponseEntity.ok(new DadosDetalhamentoColaborador(colaborador));
+    }
+
     @PutMapping("/update")
     @Transactional
     public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizaColaborador dados){

@@ -11,35 +11,35 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public record DadosCadastroColaborador(
-        @NotBlank
+        @NotBlank(message = "nomeCompleto is required")
         String nomeCompleto,
-        @NotBlank
+        @NotBlank(message = "primeiroNome is required ")
         String primeiroNome,
-        @NotBlank
+        @NotBlank(message = "ultimoNome is required")
         String ultimoNome,
-        @NotBlank
-        @Pattern(regexp = "\\d{11}")
+        @NotBlank(message = "cpf is required")
+        @Pattern(regexp = "\\d{11}", message = "CPF must contain exactly 11 numeric digits")
         String cpf,
-        @NotBlank
-        @Pattern(regexp = "\\d{7,8}")
+        @NotBlank(message = "RG is required")
+        @Pattern(regexp = "\\d{7,8}", message = "RG must contain between 7 and 8 numeric digits")
         String rg,
-        @NotBlank
-        @Email
+        @NotBlank(message = "Personal email is required")
+        @Email(message = "Invalid email format")
         String emailPessoal,
-        @NotBlank
+        @NotBlank(message = "telefoneCelular is required")
         String telefoneCelular,
-        @NotNull
+        @NotNull(message = "Endereco is required")
         @Valid
         DadosEndereco endereco,
-        @NotBlank
+        @NotBlank(message = "matricula is required")
         String matricula,
-        @NotBlank
+        @NotBlank(message = "cargo is required")
         String cargo,
-        @NotBlank
+        @NotBlank(message = "departamento is required")
         String departamento,
-        @NotNull
+        @NotNull(message = "tipoContratacao is required")
         TipoContratacao tipoContratacao,
-        @NotBlank
+        @NotBlank(message = "salario is required")
         String salario
 ){
 }
