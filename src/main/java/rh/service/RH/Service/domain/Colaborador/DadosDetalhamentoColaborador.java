@@ -1,6 +1,4 @@
-package rh.service.RH.Service.Colaborador;
-
-import rh.service.RH.Service.Endereco.Endereco;
+package rh.service.RH.Service.domain.Colaborador;
 
 public record DadosDetalhamentoColaborador(Long id, String nomeCompleto, String primeiroNome, String ultimoNome, String rg, String cpf, String emailPessoal, String emailOrganizacional, String telefoneCelular, String matricula, String cargp, String departamento, TipoContratacao tipoContratacao, String salario, String situacao) {
     public DadosDetalhamentoColaborador(Colaborador colaborador){

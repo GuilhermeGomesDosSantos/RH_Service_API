@@ -1,10 +1,10 @@
-package rh.service.RH.Service.Colaborador;
+package rh.service.RH.Service.domain.Colaborador;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import rh.service.RH.Service.Endereco.Endereco;
+import rh.service.RH.Service.domain.Endereco.Endereco;
 import rh.service.RH.Service.controller.DadosAtualizaColaborador;
 
 @Entity(name="Colaborador")

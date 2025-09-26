@@ -1,4 +1,4 @@
-package rh.service.RH.Service.Colaborador;
+package rh.service.RH.Service.domain.Colaborador;
 
 public enum TipoContratacao {
     CLT,

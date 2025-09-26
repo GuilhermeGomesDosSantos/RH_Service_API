@@ -1,4 +1,4 @@
-package rh.service.RH.Service.Colaborador;
+package rh.service.RH.Service.domain.Colaborador;
 
 public record DadosDetalhamentoColaboradorInativo(Long id, String nomeCompleto, String emailOrganizacional, String matricula, String cargo, String departamento, TipoContratacao tipoContratacao, String situacao) {
     public DadosDetalhamentoColaboradorInativo(Colaborador colaborador){

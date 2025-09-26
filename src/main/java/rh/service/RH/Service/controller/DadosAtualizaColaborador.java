@@ -2,9 +2,8 @@ package rh.service.RH.Service.controller;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
-import rh.service.RH.Service.Colaborador.TipoContratacao;
-import rh.service.RH.Service.Endereco.DadosEndereco;
-import rh.service.RH.Service.Endereco.Endereco;
+import rh.service.RH.Service.domain.Colaborador.TipoContratacao;
+import rh.service.RH.Service.domain.Endereco.DadosEndereco;
 
 public record DadosAtualizaColaborador(
         @NotNull

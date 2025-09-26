@@ -1,4 +1,4 @@
-package rh.service.RH.Service.Endereco;
+package rh.service.RH.Service.domain.Endereco;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
